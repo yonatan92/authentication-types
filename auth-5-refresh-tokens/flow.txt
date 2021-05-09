@@ -1,0 +1,18 @@
+
+
+1 - client starts up 
+2 - on startup, the client makes an ajax request -> /get-access-jwt
+3 - if the long-term refresh token exists on httpOnly cookie from previous use,
+    the server will generate a short-term access-jwt and return it to the client
+    otherwise - the server returns false and the client displays a login page.
+4 - client login -> server generates a long-term refresh token as an httpOnly cookie
+    and a short-term access-jwt
+5 - client sends the short-term access-jwt as a request header on each ajax call to the server
+6 - if the call fails - client makes an ajax request -> /get-access-jwt...
+
+
+server routes:
+/get-access-token
+/get-refresh-token
+
+
